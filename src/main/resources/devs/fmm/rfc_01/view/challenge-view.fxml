@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="devs.fmm.rfc_01.controller.ChallengeController">
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+
+    <!-- Challenge Box -->
+    <VBox fx:id="challengeBox" alignment="CENTER" spacing="20" visible="false" VBox.vgrow="ALWAYS">
+        <!-- Título fijo en la parte superior -->
+        <Label fx:id="challengeNameLabel" styleClass="challenge-title" text="Nombre del Reto" VBox.vgrow="NEVER">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+
+        <!-- Contenedor para la imagen que puede crecer -->
+        <StackPane VBox.vgrow="ALWAYS" minHeight="200" alignment="CENTER">
+            <ImageView fx:id="challengeImageView" fitHeight="300.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
+                <StackPane.margin>
+                    <Insets top="10" bottom="10" />
+                </StackPane.margin>
+            </ImageView>
+        </StackPane>
+
+        <!-- Descripción del reto -->
+        <Label fx:id="challengeDescriptionLabel" styleClass="challenge-description" text="Aquí va la descripción del reto. Esto explicará lo que el usuario necesita hacer para completar el reto." wrapText="true" VBox.vgrow="NEVER" />
+
+        <HBox alignment="CENTER" spacing="20">
+            <VBox alignment="CENTER" spacing="5">
+                <Label styleClass="challenge-label" text="Categoría" />
+                <Label fx:id="challengeCategoryLabel" styleClass="challenge-value" text="Estiramiento" />
+            </VBox>
+
+            <Separator orientation="VERTICAL" />
+
+            <VBox alignment="CENTER" spacing="5">
+                <Label styleClass="challenge-label" text="Dificultad" />
+                <Label fx:id="challengeDifficultyLabel" styleClass="challenge-value" text="Media" />
+            </VBox>
+
+            <Separator orientation="VERTICAL" />
+
+            <VBox alignment="CENTER" spacing="5">
+                <Label styleClass="challenge-label" text="Duración" />
+                <Label fx:id="challengeDurationLabel" styleClass="challenge-value" text="5 minutos" />
+            </VBox>
+        </HBox>
+
+        <!-- Timer Section -->
+        <VBox alignment="CENTER" spacing="10" styleClass="timer-section">
+            <Label text="Tiempo Restante" styleClass="timer-label" />
+            <Label fx:id="timerLabel" text="00:00" styleClass="timer-value">
+                <font>
+                    <Font name="System Bold" size="24.0" />
+                </font>
+            </Label>
+            <HBox alignment="CENTER" spacing="10">
+                <Button fx:id="startTimerButton" onAction="#handleStartTimerButton" styleClass="timer-button, success-button" text="Iniciar" />
+                <Button fx:id="pauseTimerButton" onAction="#handlePauseTimerButton" styleClass="timer-button, neutral-button" text="Pausar" />
+                <Button fx:id="resetTimerButton" onAction="#handleResetTimerButton" styleClass="timer-button, danger-button" text="Reiniciar" />
+            </HBox>
+        </VBox>
+
+        <HBox alignment="CENTER" spacing="20">
+            <Button fx:id="completeButton" onAction="#handleCompleteButton" styleClass="complete-button, success-button" text="Completar Reto" />
+            <Button fx:id="skipButton" onAction="#handleSkipButton" styleClass="skip-button, neutral-button" text="Saltar" />
+        </HBox>
+    </VBox>
+
+    <!-- No Challenge Box -->
+    <VBox fx:id="noChallengeBox" alignment="CENTER" spacing="20" visible="false">
+        <Label styleClass="no-challenge-title" text="No Hay Retos Disponibles">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+
+        <Label styleClass="no-challenge-description" text="No hay retos disponibles en este momento. Por favor, inténtalo más tarde o añade nuevos retos." wrapText="true" />
+
+        <Button onAction="#loadRandomChallenge" styleClass="retry-button, neutral-button" text="Intentar de Nuevo" />
+    </VBox>
+</StackPane>

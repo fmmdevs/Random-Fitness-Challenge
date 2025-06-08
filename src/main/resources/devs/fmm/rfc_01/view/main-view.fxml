@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="mainBorderPane" prefHeight="443.0" prefWidth="973.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="devs.fmm.rfc_01.controller.MainController">
+    <top>
+        <VBox spacing="10">
+            <padding>
+                <Insets bottom="10" left="20" right="20" top="20" />
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <Label styleClass="app-title" text="Random Fitness Challenge" />
+                <Region HBox.hgrow="ALWAYS" />
+
+                <Button fx:id="manageChallengesButton" maxWidth="Infinity" onAction="#handleManageChallengesButton" styleClass="tool-button" text="Gestionar Retos" />
+                <Button onAction="#handleViewStats" styleClass="statistics-button" text="Ver Estadísticas" />
+                <Button onAction="#handleSettings" styleClass="config-button" text="Configuración" />
+            </HBox>
+            <Separator />
+        </VBox>
+    </top>
+
+    <left>
+        <VBox spacing="15" styleClass="sidebar">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+
+            <Separator />
+
+            <!-- Barra de progreso para la próxima notificación -->
+            <VBox spacing="5">
+                <Label text="Próxima notificación:" />
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <ProgressBar fx:id="notificationProgressBar" progress="0.0" prefWidth="150" />
+                    <Label fx:id="notificationTimeLabel" text="--:--" />
+                </HBox>
+            </VBox>
+
+            <Separator />
+
+            <Label styleClass="section-title" text="Tus Estadísticas" />
+
+            <GridPane hgap="10" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="100" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="50" />
+                </columnConstraints>
+
+                <Label text="Racha Actual:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Label fx:id="streakLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label text="Retos Totales:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label fx:id="totalChallengesLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label text="Minutos Totales:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <Label fx:id="totalMinutesLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+            </GridPane>
+
+
+        </VBox>
+    </left>
+
+    <center>
+        <!-- Challenge view will be loaded here -->
+    </center>
+
+
+</BorderPane>

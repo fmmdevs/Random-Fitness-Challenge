@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="20" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="devs.fmm.rfc_01.controller.EditChallengeController">
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="20">
+        <Label styleClass="view-title" text="Editar Reto">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+
+        <Region HBox.hgrow="ALWAYS" />
+
+        <Button fx:id="backButton" onAction="#handleBackButton" styleClass="neutral-button" text="Volver" />
+    </HBox>
+
+    <Separator />
+
+    <Label text="Selecciona un reto para editar:">
+        <font>
+            <Font size="14.0" />
+        </font>
+    </Label>
+
+    <TableView fx:id="challengesTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn" prefWidth="50.0" text="ID" />
+            <TableColumn fx:id="nameColumn" prefWidth="200.0" text="Nombre" />
+            <TableColumn fx:id="categoryColumn" prefWidth="150.0" text="Categoría" />
+            <TableColumn fx:id="difficultyColumn" prefWidth="100.0" text="Dificultad" />
+            <TableColumn fx:id="durationColumn" prefWidth="100.0" text="Duración (min)" />
+        </columns>
+    </TableView>
+
+    <HBox alignment="CENTER" spacing="20">
+        <Button fx:id="editButton" onAction="#handleEditButton" styleClass="success-button" text="Editar Reto Seleccionado" />
+        <Button fx:id="deleteButton" onAction="#handleDeleteButton" styleClass="danger-button" text="Eliminar Reto" />
+    </HBox>
+</VBox>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" prefHeight="523.0" prefWidth="1005.0" spacing="20" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="devs.fmm.rfc_01.controller.SettingsController">
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="20">
+        <Label styleClass="view-title" text="Configuración">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+
+        <Region HBox.hgrow="ALWAYS" />
+
+        <Button onAction="#handleBackButton" styleClass="neutral-button" text="Volver" />
+    </HBox>
+
+    <Separator />
+
+    <VBox prefHeight="173.0" prefWidth="771.0" spacing="20" styleClass="settings-section">
+        <Label styleClass="section-title" text="Notificaciones">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+
+        <GridPane alignment="CENTER" hgap="15" vgap="15" prefWidth="800.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="300.0" prefWidth="400.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="300.0" prefWidth="400.0" />
+            </columnConstraints>
+
+            <Label text="Activar Notificaciones:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <ToggleButton fx:id="notificationsToggle" onAction="#handleToggleNotifications" text="Activadas" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Intervalo de Notificaciones:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="311.0" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Spinner fx:id="notificationIntervalSpinner" editable="true" maxWidth="80" />
+                <Label text="minutos" />
+            </HBox>
+
+            <Label text="Estado:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Label fx:id="notificationStatusLabel" text="Las notificaciones están desactivadas." GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+    </VBox>
+
+    <Separator />
+
+    <VBox spacing="20" styleClass="settings-section">
+        <Label styleClass="section-title" text="Danger Zone">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+
+        <GridPane alignment="CENTER" hgap="15" vgap="20" prefWidth="800.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="300.0" prefWidth="400.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="300.0" prefWidth="400.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="34.0" minHeight="29.0" prefHeight="33.0" />
+                <RowConstraints maxHeight="23.0" minHeight="18.0" prefHeight="19.0" />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+            </rowConstraints>
+
+            <Label alignment="CENTER" text="Reiniciar todas las estadísticas e historial:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Button fx:id="resetStatsButton" onAction="#handleResetStats" styleClass="danger-button" text="Reiniciar Estadísticas" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label alignment="CENTER" styleClass="warning-text" text="Advertencia: Esta acción no se puede deshacer. Todas tus estadísticas e historial serán eliminados permanentemente." wrapText="true" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+
+            <Separator GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+
+            <Label text="Reiniciar completamente la aplicación:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <Button fx:id="resetAppButton" onAction="#handleResetApplication" styleClass="danger-button" text="Reiniciar Aplicación" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+            <Label alignment="CENTER" styleClass="warning-text" text="Advertencia: Esta acción reiniciará la aplicación a su estado inicial. Todas tus estadísticas, historial, retos personalizados y configuraciones serán eliminados permanentemente. Los retos volverán a ser los predeterminados." wrapText="true" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+        </GridPane>
+    </VBox>
+</VBox>
